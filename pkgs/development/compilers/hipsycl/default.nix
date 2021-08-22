@@ -22,13 +22,12 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake python3 ];
-  buildInputs = [ clang openmp llvm ];
+  buildInputs = [ clang openmp llvm boost.dev ];
   cmakeFlags = [
     "-DCLANG_INCLUDE_PATH=${clang}/resource-root/include"
     "-DWITH_CUDA_BACKEND=NO"
     "-DWITH_ROCM_BACKEND=YES"
     "-DROCM_PATH=${device-libs}"
-    "-DBOOST_ROOT=${boost}/include"
   ];
   propagatedBuildInputs = [ hip rocm-runtime ];
 
