@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
     "-DWITH_ROCM_BACKEND=YES"
     "-DROCM_PATH=${device-libs}"
   ];
-  propagatedBuildInputs = [ hip rocr ];
+  propagatedBuildInputs = [ hip rocm-runtime ];
 
   NIX_TARGET_CFLAGS_COMPILE = " -isystem ${clang-unwrapped}/include";
 
