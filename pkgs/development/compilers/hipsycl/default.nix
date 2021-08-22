@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     "-DWITH_CUDA_BACKEND=NO"
     "-DWITH_ROCM_BACKEND=YES"
     "-DROCM_PATH=${device-libs}"
-    "-DBOOST_ROOT=${boost}"
+    "-DBOOST_ROOT=${boost}/include"
   ];
   propagatedBuildInputs = [ hip rocm-runtime ];
 
