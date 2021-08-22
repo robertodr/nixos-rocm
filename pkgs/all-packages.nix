@@ -272,7 +272,7 @@ with pkgs;
     llvm = self.amd-llvm;
     openmp = self.amd-openmp;
 
-    device-libs = self.amd-device-libs;
+    device-libs = self.rocm-device-libs;
   };
 
   hipsycl = callPackage ./development/compilers/hipsycl {
@@ -282,7 +282,7 @@ with pkgs;
     llvm = pkgs.llvmPackages.llvm;
     openmp = pkgs.llvmPackages.openmp;
 
-    device-libs = self.amd-device-libs;
+    device-libs = self.rocm-device-libs;
   };
 
   hashcat-rocm = pkgs.hashcat.overrideAttrs (old: {
