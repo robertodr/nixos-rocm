@@ -264,6 +264,27 @@ with pkgs;
 
   darktable-rocm = throw "'darktable-rocm' is no longer needed; please use the 'nixpkgs.darktable' package."; # added 2021-03-09
 
+  amd-hipsycl = callPackage ./development/compilers/hipsycl {
+    stdenv = pkgs.overrideCC pkgs.clangStdenv self.amd-clang;
+    hip = self.hip;
+    clang = self.amd-clang;
+    clang-unwrapped = self.amd-clang-unwrapped;
+    llvm = self.amd-llvm;
+    openmp = self.amd-openmp;
+
+    device-libs = self.amd-device-libs;
+  };
+
+  hipsycl = callPackage ./development/compilers/hipsycl {
+    stdenv = pkgs.overrideCC pkgs.clangStdenv pkgs.llvmPackages.clang;
+    clang = pkgs.llvmPackages.clang;
+    clang-unwrapped = pkgs.llvmPackages.clang-unwrapped;
+    llvm = pkgs.llvmPackages.llvm;
+    openmp = pkgs.llvmPackages.openmp;
+
+    device-libs = self.amd-device-libs;
+  };
+
   hashcat-rocm = pkgs.hashcat.overrideAttrs (old: {
     preFixup = (old.preFixup or "") + ''
       for f in $(find $out/share/hashcat/OpenCL -name '*.cl'); do
