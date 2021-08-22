@@ -7,7 +7,7 @@
 , clang
 , clang-unwrapped
 , openmp
-, rocr
+, rocm-runtime
 , hip
 , boost
 }:
@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     owner = "illuhad";
     repo = "hipSYCL";
     rev = "v${version}";
-    sha256 = "0n5qgypyx8qs43y18j1drnanhy7al7namhxn0yzgdws6z7lxsnyz";
+    sha256 = "020wr7n9g6kw2klwzlxz6fcw74h2kdm752pqkvn6q28marb549a1";
   };
 
   nativeBuildInputs = [ cmake python3 ];
